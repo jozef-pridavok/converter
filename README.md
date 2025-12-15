@@ -57,7 +57,7 @@ flutter run -d chrome
 
 ## Usage
 
-1. **Select Currencies** - Tap currency icons to choose from 40+ fiat and 15+ crypto currencies
+1. **Select Currencies** - Tap currency to choose from fiat and crypto currencies
 2. **Enter Amount** - Use the built-in calculator keypad to input values
 3. **Auto-Convert** - All conversions happen instantly across all selected currencies
 4. **Refresh Rates** - Tap the refresh button to update exchange rates
