@@ -80,6 +80,16 @@ class CurrencyRowsNotifier extends StateNotifier<List<CurrencyRow>> {
             .toList(),
       ) {
     _loadSavedState();
+
+    // Listen to exchange rate changes and automatically recalculate values
+    _ref.listen(exchangeRatesProvider, (previous, next) {
+      next.whenData((rates) {
+        final activeRow = state.firstWhere((row) => row.isActive, orElse: () => state.first);
+        if (activeRow.displayValue.isNotEmpty) {
+          updateConvertedValues(rates);
+        }
+      });
+    });
   }
 
   Future<void> _loadSavedState() async {
