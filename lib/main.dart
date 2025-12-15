@@ -72,15 +72,17 @@ class _MyAppState extends ConsumerState<MyApp> with WidgetsBindingObserver, Wind
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
 
-    // Save state when app is paused, detached, or hidden (mobile)
     if (state == AppLifecycleState.paused || state == AppLifecycleState.detached || state == AppLifecycleState.hidden) {
       ref.read(currencyRowsProvider.notifier).saveState();
+    }
+
+    if (state == AppLifecycleState.resumed) {
+      ref.read(exchangeRatesProvider.notifier).refreshRates();
     }
   }
 
   @override
   void onWindowClose() async {
-    // Save state before window closes (desktop)
     await ref.read(currencyRowsProvider.notifier).saveState();
     await windowManager.destroy();
   }
