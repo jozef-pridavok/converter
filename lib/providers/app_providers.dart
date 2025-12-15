@@ -295,12 +295,8 @@ class CalculatorNotifier extends StateNotifier<String> {
         return;
     }
 
-    state = _formatResult(result);
+    state = NumberFormatter.formatResult(result);
     _updateActiveRow(state);
-  }
-
-  String _formatResult(double value) {
-    return NumberFormatter.formatResult(value);
   }
 
   void _updateActiveRow(String value) {

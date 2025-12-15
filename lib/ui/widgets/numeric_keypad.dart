@@ -56,7 +56,7 @@ class NumericKeypad extends StatelessWidget {
             children: [
               _buildButton(decimalSeparator, onDigitPressed, context),
               _buildButton('0', onDigitPressed, context),
-              _buildSpecialButton('←', onBackspace, Colors.orange),
+              _buildButton('000', onDigitPressed, context),
               _buildOperatorButton('+', onOperatorPressed),
             ],
           ),
@@ -64,7 +64,8 @@ class NumericKeypad extends StatelessWidget {
           Row(
             children: [
               _buildSpecialButton('C', onClear, Colors.red),
-              _buildSpecialButton('=', onEquals, Colors.green, flex: 3),
+              _buildSpecialButton('←', onBackspace, Colors.orange),
+              _buildSpecialButton('=', onEquals, Colors.green, flex: 2),
             ],
           ),
         ],
